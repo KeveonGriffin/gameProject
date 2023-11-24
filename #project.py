@@ -10,8 +10,7 @@ def screen_coords(x,y):
     return(x * GRID_SIZE, y * GRID_SIZE)
 def draw_background():
     for y in range(GRID_HEIGHT):
-        for x in range(GRID_HEIGHT):
-            screen.blit("floor2", screen_coords(x,y))
+        for x in range(GRID_WIDTH):
+            screen.blit("floor1", screen_coords(x,y))
 def draw():
     draw_background()
-pgzrun.go()

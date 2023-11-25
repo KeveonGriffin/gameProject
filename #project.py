@@ -49,6 +49,8 @@ def draw_scenery():
                 screen.blit("door", screen_coords(x,y))
 def draw_actors():
     player.draw()
+    for key in keys_to_collect:
+        key.draw()
 def draw():
     draw_background()
     draw_scenery
@@ -70,7 +72,13 @@ def move_player(dx, dy):
     if square == 'W':
         return
     elif square == 'D':
-        return
+        if len(keys_to_collect) > 0:
+            return
+    for key in keys_to_collect:
+        (key_x, key_y) = grid_coords(key)
+        if x == key_x and y == key_y:
+            keys_to_collect.remove(key)
+            break
     player.pos = screen_coords(x, y)
 setup_game()
 pgzrun.go()

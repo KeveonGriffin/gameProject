@@ -23,13 +23,17 @@ def screen_coords(x,y):
 def grid_coords(actor):
     return (round(actor.x / GRID_SIZE), round(actor.y / GRID_SIZE))
 def setup_game():
-    global player
+    global player, keys_to_collect
     player = Actor("player", anchor=("left", "top"))
+    keys_to_collect = []
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):
             square = MAP[y][x]
             if square == "P":
                 player.pos = screen_coords(x, y)
+            elif square == 'K':
+                key = Actor("key", anchor=("left", "top"). \
+                    pos = screen_coords(x,y))
 def draw_background():
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):

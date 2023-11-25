@@ -32,8 +32,9 @@ def setup_game():
             if square == "P":
                 player.pos = screen_coords(x, y)
             elif square == 'K':
-                key = Actor("key", anchor=("left", "top"). \
+                key = Actor("key", anchor=("left", "top"), \
                     pos = screen_coords(x,y))
+                keys_to_collect.append(key)
 def draw_background():
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):

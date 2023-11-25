@@ -99,6 +99,23 @@ def move_player(dx, dy):
             keys_to_collect.remove(key)
             break
     player.pos = screen_coords(x, y)
+def move_guard(guard):
+    global game_over
+    if game_over:
+        return
+    (player_x, player_y) = grid_coords(player)
+    (guard_x, guard_y) = grid_coords(guard)
+    if player_x > guard_x and MAP[guard_x + 1][guard_y] != "W":
+        guard_x += 1
+    elif player_x < guard_x and MAP[guard_x - 1][guard_y] != "W":
+        guard_x -= 1
+    elif player_y > guard_y and MAP[guard_x][guard_y + 1] != "W":
+        guard_y += 1
+    elif player_y > guard_y and MAP[guard_x][guard_y - 1] != "W":
+        guard_y -= 1
+    guard.pos = screen_coords(guard_x, guard_y)
+    if guard_x == player_x and guard_y == player_y:
+        game_over = True
 setup_game()
 pgzrun.go()
 

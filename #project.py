@@ -57,6 +57,16 @@ def on_key_down(key):
         move_player(1,0)
     elif key == keys.DOWN:
         move_player(0, 1)
+def move_player(dx, dy):
+    (x, y) = grid_coords(player)
+    x += dx
+    y += dy
+    square = MAP[y][x]
+    if square == 'W':
+        return
+    elif square == 'D':
+        return
+    player.pos = screen_coords(x, y)
 setup_game()
 pgzrun.go()
 
